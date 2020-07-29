@@ -1,0 +1,19 @@
+<!-- Login Page -->
+<form action="/" method="POST" class="d-flex flex-column align-items-center border border-dark rounded">
+
+    <h2 class="mx-5 mt-4 pb-1">Account Login</h2>
+
+    <input name="email" type="email" placeholder="Email" class="rounded my-3 p-2" value={{email}}>
+
+    <input name="password" type="password" placeholder="Password" class="rounded my-3 p-2" value={{password}}>
+
+ 
+    <div class="text-center p-0">
+        {{#if errorMessage}}
+        <code>{{errorMessage}}</code>
+        {{/if}}
+    </div>
+
+    <button type="submit" class="rounded my-4 p-2 px-4">Sign in</button>
+
+</form>
