@@ -34,15 +34,16 @@ const users = [
 ]
 
 const redirectLogin = ( req, res, next) => {
-  if (!req.session.firstName){
-    res.redirect('/')
+  if (!req.session.userId){
+    console.log(req.session)
+    res.redirect('/login')
   } else {
     next()
   }
 }
 
 const redirectHome = ( req, res, next) => {
-  if (req.session.firstName){
+  if (req.session.userId){
     res.redirect('/home')
   } else {
     next()
@@ -105,8 +106,8 @@ app.post("/login", redirectHome, (req,res) => {
     )
     if (user) {
       req.session.userId = user.id
+      console.log(req.session.userId)
       return res.redirect('/home')
-      console.log(user)
     }
   }
   res.redirect('/login')
@@ -114,26 +115,25 @@ app.post("/login", redirectHome, (req,res) => {
 
 //POST register
 app.post("/register", redirectHome, (req,res) => {
-  const { name, email, password } = req.body
-  if (name && email && password){
+  const { firstname, email, password } = req.body
+  if (firstname && email && password){
     const exists = users.some(
       user => user.email === email
     )
     if (!exists) {
       const user = {
         id: users.length + 1,
-        name,
+        firstname,
         email,
         password
       }
-      console.log(user)
       users.push(user)
-      console.log(user)
       req.session.userId = user.id
       return res.redirect('/home')
     }
   }
-  res.redirect('/register')
+  console.log(req.body)
+  res.redirect('/login')
 })
 
 //POST logout
