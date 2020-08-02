@@ -1,4 +1,4 @@
-# Account Login (No Cookie)
+# Account Login (Express-session)
 使用者登入
 
 ## 安裝方式
@@ -17,7 +17,7 @@
 3. 使用者可以登出
 
 ## 特定使用者的登入email及password
-| Plugin | README |
+| Email | Password |
 | ------ | ------ |
 | tony@stark.com | iamironman |
 | captain@hotmail.com | icandothisallday |
